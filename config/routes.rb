@@ -1,8 +1,18 @@
 Rails.application.routes.draw do
+  
+  
+  devise_for :admin,controllers:{
+sessions: "admin/sessions"
+  }
+  devise_for :customer,controllers:{
+   registrations: "public/registrations",
+   sessions: 'public/sessions'
+  }
+  
   namespace :admin do
     resources :orders,only:[:show]
     resources :customers,only:[:index,:show,:edit]
-    resources :genres,only:[:index,:edit]
+    resources :genres,only:[:index,:edit,:create,:update]
     resources :items,only:[:index,:new,:show,:edit]
   end
   scope module: :public do
@@ -15,12 +25,5 @@ Rails.application.routes.draw do
     resources :customers,only:[:show,:edit]
     resources :items,only:[:index,:show]
   end
-  devise_for :admin,controllers:{
-sessions: "admin/sessions"
-  }
-  devise_for :customer,controllers:{
-   registrations: "public/registrations",
-   sessions: 'public/sessions'
-  }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
