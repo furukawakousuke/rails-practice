@@ -49,7 +49,7 @@
         <td>
           <%= f.label :password,"パスワード(6文字以上)" %>
         </td>
-        <td class="text-right"><%= f.text_field :password %></td>
+        <td class="text-right"><%= f.password_field :password, autocomplete: "current-password" %></td>
       </tr>
       <tr>
         <td><%= f.label :password_confirmation,"パスワード(確認用)" %></td>
@@ -63,8 +63,9 @@
     <%= f.submit "新規登録",class:"btn btn-success px-5" %>
   </div>
 <% end %>
+      <h5 class="d-inline-block bg-light mt-5 px-3">既に登録済みの方</h5><br>
+      <%= link_to "こちら",customer_session_path,class:"ml-5 " %>をクリックしてください。
     </div>
   </div>
 </div>
 
-<%= render "public/shared/links" %>

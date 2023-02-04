@@ -1,7 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <h5 class="d-inline-block bg-light my-5 px-3">商品一覧</h5>
+      <h5 class="d-inline-block bg-light mt-5 px-3">商品一覧</h5>
+      <%= link_to new_admin_item_path,class:"d-block text-right " do %>
+      <i class="fa-solid fa-circle-plus h4 text-dark"></i>
+      <% end %>
       <table class="table">
         <thead class="bg-light">
           <tr>

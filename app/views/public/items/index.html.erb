@@ -1,2 +1,32 @@
-<h1>Public::Item#index</h1>
-<p>Find me in app/views/public/item/index.html.erb</p>
+<div class="container">
+  <div class="row my-5">
+    <div class="col-3">
+      <table class="d-inline-block border bordered pb-5 mt-4">
+        <thead>
+          <th class="border-bottom px-3">
+            ジャンル検索
+          </th>
+        </thead>
+        <% @genres.each do |genre| %>
+        <tbody>
+          <tr>
+            <td class="px-2 text-left"><%= genre.name %></td>
+          <% end %>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-8 mt-5">
+      <h5 class="d-inline-block bg-light mb-4 px-3">商品一覧</h5><br>
+      <% @items.each do |item|%>
+      <div class="d-inline-block pr-3 py-2">
+        <%= image_tag item.get_image,:size=>'130x130' %><br>
+        <p class="my-2"><%= item.name %></p>
+        <p>¥<%= item.zeikomi.to_s(:delimited) %></p>
+      </div>
+      <% end %>
+      <div class="d-block text-right"><%= paginate @items,class:"d-inline-block text-right" %></div>
+
+    </div>
+  </div>
+</div>

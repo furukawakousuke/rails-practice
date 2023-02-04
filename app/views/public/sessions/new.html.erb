@@ -1,26 +1,26 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email,class:"jquery" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"jquery" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password",class:"jquery" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class="container">
+  <div class-"row">
+    <div class="col-12">
+      <h5 class="d-inline-block bg-light my-5 px-3">ログイン</h5><br>
+      <p class="d-inline-block bg-light px-3">会員の方はこちらからログイン</p>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <table class="pl-4 mx-auto">
+        <tr>
+         <td class="px-5 pb-2"><%= f.label :email,"メールアドレス",class:"jquery" %></td>
+          <td class="pb-2"><%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder:"sample@example.com",class:"jquery",:size=>"50" %></td> 
+        </tr>
+        <tr>
+         <td class="px-5 pb-2"><%= f.label :password,"パスワード",class:"jquery " %></td>
+         <td class="pb-2"><%= f.password_field :password, autocomplete: "current-password",class:"jquery",:size=>"50" %></td> 
+        </tr>
+        <tr>
+         <td></td>
+         <td><%= f.submit "ログイン",class:"btn btn-primary px-4 mt-4" %></td>
+        </tr>
+      </table>
+      <% end %>
+     <h5 class="d-inline-block bg-light mt-5 px-3">会員登録がお済みでない方</h5><br>
+     <%= link_to "こちら",new_customer_registration_path,class:"pl-5 pr-2" %>から新規登録を行なってください。
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= render "public/shared/links" %>
+</div>

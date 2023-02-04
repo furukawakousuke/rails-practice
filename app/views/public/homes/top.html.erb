@@ -1,3 +1,43 @@
-<h1 class="jquery">Public::Homes#top</h1>
-<i class="fa-brands fa-twitter text-primary"></i>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <table class="d-inline-block border bordered pb-5 mt-4">
+        <thead>
+          <th class="border-bottom px-3">
+            ジャンル検索
+          </th>
+        </thead>
+        <% @genres.each do |genre| %>
+        <tbody>
+          <tr>
+            <td class="px-2 text-left"><%= genre.name %></td>
+          <% end %>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-6 mt-5">
+      <p class="p-4 border border-dark mt-5">ようこそnaganoケーキへ！<br>このサイトはケーキ販売のECサイトのページになります。<br>
+      会員でない方も商品の閲覧できますが、<br>
+      購入には会員登録が必要になります。</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-8">
+      <h4 class="font-weight-bold">新着商品</h4>
+      <table class="">
+      <% @items.each do |item|%>
+        <th>
+      <td class="d-inline-block pr-3 font-weight-bold">
+        <%= image_tag item.get_image,:size=>'100x100' %><br>
+        <p class="my-2"><%= item.name %></p>
+        <p>¥<%= item.zeikomi.to_s(:delimited) %></p>
+      </td>
+      </th>
+      <% end %>
+      </table>
+      <div class="text-right"><%= link_to "全ての商品を見る >",items_path %></div>
+    </div>
+  </div>
+</div>

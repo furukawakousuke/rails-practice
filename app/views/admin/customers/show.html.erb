@@ -1,2 +1,55 @@
-<h1>Admin::Customers#show</h1>
-<p>Find me in app/views/admin/customers/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h5 class="d-inline-block bg-light my-5 px-3"><%= @customer.full_name %><span>さんの会員詳細画面</span></h5>
+      <table class="">
+        <tr>
+          <td class="d-inline-block pt-3 pr-4">会員ID</td>
+          <td class="pl-4 pt-3"><%= @customer.id %></td>
+        </tr>
+        <tr>
+          <td class="d-inline-block pt-3 pr-4">氏名</td>
+          <td class="pl-4 pt-3"><%= @customer.full_name %></td>
+        </tr>
+        <tr>
+          <td class="d-inline-block pt-3 pr-4">フリガナ</td>
+          <td class="pl-4 pt-3"><%= @customer.full_name_kana %></td>
+        </tr>
+        <tr>
+          <td class="d-inline-block pt-3 pr-4">郵便番号</td>
+          <td class="pl-4 pt-3"><%= @customer.postal_code %></td>
+        </tr>
+        <tr>
+          <td class="d-inline-block pt-3 pr-4">住所</td>
+          <td class="pl-4 pt-3"><%= @customer.address %></td>
+        </tr>
+        <tr>
+          <td class="d-inline-block pt-3 pr-4">電話番号</td>
+          <td class="pl-4 pt-3"><%= @customer.telephone_number %></td>
+        </tr>
+        <tr>
+          <td class="d-inline-block pt-3 pr-4">メールアドレス</td>
+          <td class="pl-4 pt-3"><%= @customer.email %></td>
+        </tr>
+        <tr>
+        <td class="d-inline-block pt-3 pr-4">会員ステータス</td>
+        <td class="pl-4 pt-3">
+          <% if @customer.is_deleted == "valider" %>
+          <span class="text-success font-weight-bold"><%= @customer.is_deleted_i18n %></span>
+          <% else %>
+          <span class="text-secondary font-weight-bold"><%= @customer.is_deleted_i18n %></span>
+          <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <%= link_to "編集する",edit_admin_customer_path(@customer),class:"btn btn-success px-4 mt-4 mr-3 ml-4" %>
+            <%= link_to "注文履歴一覧を見る",admin_order_path(@customer),class:"btn btn-primary px-2 mt-4 ml-5" %>
+            </td>
+        </tr>
+      </table>
+      
+    </div>
+  </div>
+</div>
