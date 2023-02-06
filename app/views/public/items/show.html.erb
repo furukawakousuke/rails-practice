@@ -1,2 +1,31 @@
-<h1>Public::Item#show</h1>
-<p>Find me in app/views/public/item/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <%= render 'public/homes/genre',genres: @genres %>
+    </div>
+    <div class="col-4">
+     <%= image_tag @item.get_image,:size=>"200x200",class:"mt-4" %>
+    </div>
+    <div class="col-5">
+      <table class="mt-5">
+        <tr>
+          <td class="h4 font-weight-bold"><%= @item.name %></td>
+        </tr>
+        <tr>
+          <td class="pt-3 pb-5"><%= @item.introduction %></td>
+        </tr>
+        <tr>
+          <td class="h5">¥ <%= @item.zeikomi.to_s(:delimited) %><small>(税込)</small></td>
+        </tr>
+        <tr>
+            <%= form_with model: @cart_item,url: cart_items_path,method: :post do |f| %>
+          <td>
+            <%= f.select :amount, *[1..10],class:"form-control" %>
+            <%= f.submit "カートに入れる",class:"btn btn-primary" %>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

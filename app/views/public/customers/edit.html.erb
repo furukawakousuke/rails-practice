@@ -1,2 +1,53 @@
-<h1>Public::Customers#edit</h1>
-<p>Find me in app/views/public/customers/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h5 class="d-inline-block bg-light mb-4 px-3">会員情報編集</h5><br>
+      <%= form_with model: @customer,url: customer_path(@customer),method: :patch do |f| %>
+        <table class="ml-5">
+    <tbody>
+      <tr>
+        <td class="pr-5"><%= f.label :full_name,"氏名" %></td>
+        <td class="text-right">
+        <%= f.text_field :first_name,placeholder:"令和" %>
+        </td>
+        <td class="text-right">
+          <%= f.text_field :last_name,placeholder:"道子",class:"ml-3" %>
+        </td>
+      </tr>
+      <tr>
+        <td><%= f.label :full_name_kana,"フリガナ" %></td>
+        <td>
+        <%= f.text_field :first_name_kana,placeholder:"レイワ" %>
+        </td>
+        <td>
+          <%= f.text_field :last_name_kana,placeholder:"ミチコ",class:"ml-3" %>
+        </td>
+      </tr>
+      <tr>
+        <td class="pr-5"><%= f.label :postal_code,"郵便番号(ハイフンなし)" %></td>
+        <td class="text-right"><%= f.text_field :postal_code,placeholder:"0000000" %></td>
+      </tr>
+      <tr colspan="3">
+        <td><%= f.label :address,"住所" %></td>
+        <td class="te"  colspan="3"><%= f.text_field :address,:size=>"40",placeholder:"東京都渋谷区蓬町xx-xx" %></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><%= f.label :telephone_number,"電話番号(ハイフンなし)" %></td>
+        <td class="text-right"><%= f.text_field :telephone_number,placeholder:"00000000000" %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :email,"メールアドレス" %></td>
+        <td class="text-right"><%= f.text_field :email,placeholder:"sample@example.com" %></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><%= f.submit "編集内容を保存",class:"btn btn-success btn-sm px-4 font-weight-bold" %></td>
+        <td><%= link_to "退会する",customers_unsubscribe_path,class:"btn btn-danger btn-sm" %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+    </div>
+  </div>
+</div>

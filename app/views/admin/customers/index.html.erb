@@ -15,7 +15,13 @@
             <td><%= customer.id %></td>
             <td><%= customer.full_name %></td>
             <td><%= customer.email %></td>
-            <td><%= customer.is_deleted %></td>
+            <td>
+              <% if customer.is_deleted == "valider" %>
+              <span class="text-success font-weight-bold"><%= customer.is_deleted_i18n %></span>
+              <% else %>
+              <span class="text-secondary font-weight-bold"><%= customer.is_deleted_i18n %></span>
+              <% end %>
+            </td>
           </tr>
           <% end %>
         </tbody>

@@ -18,11 +18,14 @@ sessions: "admin/sessions"
   scope module: :public do
     root to: 'homes#top'
     get 'about' => 'homes#about'
-    resources :addresses,only:[:index,:edit]
+    resources :addresses,only:[:index,:edit,:create,:update,:destroy]
     get 'orders/complete'
-    resources :orders,only:[:new,:index,:show]
-    resources :cart_items,only:[:index]
-    resources :customers,only:[:show,:edit]
+    resources :orders,only:[:new,:index,:show,:create]
+    resources :cart_items,only:[:index,:create,:update,:destroy]
+    get 'customers/unsubscribe'
+    patch '/customers/withdraw'
+    get 'customers/mypage' => 'customers#show'
+    resources :customers,only:[:edit,:update]
     resources :items,only:[:index,:show]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

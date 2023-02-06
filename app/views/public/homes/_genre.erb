@@ -1,0 +1,14 @@
+<table class="d-inline-block border bordered pb-5 mt-4">
+        <thead>
+          <th class="border-bottom px-3">
+            ジャンル検索
+          </th>
+        </thead>
+        <% genres.each do |genre| %>
+        <tbody>
+          <tr>
+            <td class="px-2 text-left"><%= genre.name %></td>
+          <% end %>
+          </tr>
+        </tbody>
+      </table>
