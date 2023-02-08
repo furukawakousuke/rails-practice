@@ -10,7 +10,7 @@ sessions: "admin/sessions"
   }
   
   namespace :admin do
-    resources :orders,only:[:show,:update]
+    resources :orders,only:[:index,:show,:update]
     resources :customers,only:[:index,:show,:edit,:update]
     resources :genres,only:[:index,:edit,:create,:update]
     resources :items,only:[:index,:new,:show,:edit,:create,:update]
@@ -21,6 +21,12 @@ sessions: "admin/sessions"
     resources :addresses,only:[:index,:edit,:create,:update,:destroy]
     get 'orders/complete'
     resources :orders,only:[:new,:index,:show,:create]
+    resources :cart_items do
+     collection do
+          delete 'destroy_all'
+        end
+    end
+    delete 'cart_items/destroy_all' => 'cart_items#destroy'
     resources :cart_items,only:[:index,:create,:update,:destroy]
     get 'customers/unsubscribe'
     patch '/customers/withdraw'

@@ -7,6 +7,7 @@
      <%= image_tag @item.get_image,:size=>"200x200",class:"mt-4" %>
     </div>
     <div class="col-5">
+          <%= form_with model: @cart_item,url: cart_items_path,method: :post do |f| %>
       <table class="mt-5">
         <tr>
           <td class="h4 font-weight-bold"><%= @item.name %></td>
@@ -18,12 +19,12 @@
           <td class="h5">¥ <%= @item.zeikomi.to_s(:delimited) %><small>(税込)</small></td>
         </tr>
         <tr>
-            <%= form_with model: @cart_item,url: cart_items_path,method: :post do |f| %>
           <td>
+            <%= f.hidden_field :amount %>
             <%= f.select :amount, *[1..10],class:"form-control" %>
-            <%= f.submit "カートに入れる",class:"btn btn-primary" %>
-            <% end %>
+            <%= f.submit"カートに入れる",class:"btn btn-primary" %>
           </td>
+            <% end %>
         </tr>
       </table>
     </div>

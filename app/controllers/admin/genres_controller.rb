@@ -1,9 +1,10 @@
 class Admin::GenresController < ApplicationController
+    before_action :authenticate_admin!, except: [:top]
   def index
     @genres = Genre.all
     @genre = Genre.new
   end
-  
+
   def create
     @genre = Genre.new(genre_params)
     @genre.save
@@ -13,7 +14,7 @@ class Admin::GenresController < ApplicationController
   def edit
     @genre = Genre.find(params[:id])
   end
-  
+
 
   def update
     @genre = Genre.find(params[:id])
@@ -23,7 +24,7 @@ class Admin::GenresController < ApplicationController
 end
 
   private
-  
+
   def genre_params
     params.require(:genre).permit(:name)
   end

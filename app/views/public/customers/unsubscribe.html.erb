@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-12 mx-auto text-center">
+    <div class="col-12 mx-auto text-center mt-5">
       <p class="font-weight-bold">本当に退会しますか？</p>
       <p>退会すると、会員登録情報や<br>
       これまでの購入履歴が閲覧できなくなります。<br>
@@ -8,7 +8,7 @@
       <div class="d-block">
       <%= form_with model: @customer,url: customers_unsubscribe_path,method: :patch do |f| %>
         <%= link_to "退会しない",customers_mypage_path,class:"btn btn-primary px-4 btn-sm" %>
-      <%= f.submit "退会する" ,class:"btn btn-danger btn-sm px-5 d-inline" %>
+      <%= f.submit "退会する" ,class:"btn btn-danger btn-sm px-4 d-inline" %>
       </div>
 
       <% end %>
