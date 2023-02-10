@@ -7,4 +7,53 @@
       <%= link_to "カートを空にする",destroy_all_cart_items_path,method: :delete,class:"d-inline-block btn btn-danger btn-sm" %>
     </div>
   </div>
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-bordered">
+        <thead class="bg-light">
+          <tr>
+            <td>商品名</td>
+            <td>単価(税込)</td>
+            <td>数量</td>
+            <td>小計</td>
+            <td></td>
+          </tr>
+        </thead>
+        <% @cart_items.each do |cart_item| %>
+        <% @total= @total + cart_item.subtotal %>
+        <tbody>
+          <%= form_with model: cart_item,url: cart_item_path(cart_item),method: :patch do |f| %>
+          <tr>
+            <td><%= cart_item.item.name %></td>
+            <td><%= cart_item.item.zeikomi.to_s(:delimited) %></td>
+            <td>
+              <%= f.hidden_field :item_id %>
+              <%= f.select :amount, *[1..10],class:"form-control" %>
+              <%= f.submit "変更",class:"btn btn-success btn-sm" %>
+            </td>
+            <td><%= cart_item.subtotal.to_s(:delimited) %></td>
+            <td><%= link_to "削除",cart_item_path(cart_item.id),method: :delete,class:"btn btn-danger btn-sm" %></td>
+          </tr>
+          <% end %>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-8">
+      <%= link_to "買い物を続ける",items_path,class:"btn btn-primary btn-sm px-4" %>
+    </div>
+    <div class="col-4 text-right d-inline-block">
+      <table class="table-bordered text-right">
+          <td class=" px-4 bg-light">合計金額</td>
+          <td class="px-4">¥<%= @total.to_s(:delimited) %></td>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 text-center mt-4">
+      <%= link_to "情報入力へ進む",new_order_path,class:"btn btn-success px-3" %>
+    </div>
+  </div>
 </div>

@@ -12,6 +12,10 @@ class Item < ApplicationRecord
     (price * 1.10).round(0)
   end
   
+  def goukei
+    (zeikomi + 800)
+  end
+  
   
   def get_image
     unless image.attached?

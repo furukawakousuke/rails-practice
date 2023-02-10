@@ -8,3 +8,7 @@
         is_deleted:
           valider: "有効"
           withdrawal: "退会"
+      order:
+        payment_method:
+          credit_card: "クレジットカード"
+          bank: "銀行"

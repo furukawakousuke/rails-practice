@@ -20,13 +20,13 @@ sessions: "admin/sessions"
     get 'about' => 'homes#about'
     resources :addresses,only:[:index,:edit,:create,:update,:destroy]
     get 'orders/complete'
+    post 'orders/confirm'
     resources :orders,only:[:new,:index,:show,:create]
     resources :cart_items do
      collection do
           delete 'destroy_all'
         end
     end
-    delete 'cart_items/destroy_all' => 'cart_items#destroy'
     resources :cart_items,only:[:index,:create,:update,:destroy]
     get 'customers/unsubscribe'
     patch '/customers/withdraw'

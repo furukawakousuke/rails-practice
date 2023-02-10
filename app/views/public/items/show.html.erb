@@ -20,7 +20,7 @@
         </tr>
         <tr>
           <td>
-            <%= f.hidden_field :amount %>
+            <%= f.hidden_field :item_id,:value => @item.id %>
             <%= f.select :amount, *[1..10],class:"form-control" %>
             <%= f.submit"カートに入れる",class:"btn btn-primary" %>
           </td>
