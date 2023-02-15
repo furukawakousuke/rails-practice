@@ -12,3 +12,15 @@
         payment_method:
           credit_card: "クレジットカード"
           bank: "銀行"
+        status:
+          waiting: "入金待ち"
+          confirmation: "入金確認"
+          production: "製作中"
+          sending: "発送準備中"
+          arrived: "発送済み"
+      order_detail:
+        making_status:
+          impossible: "製作不可"
+          waiting: "製作待ち"
+          production: "製作中"
+          finish: "製作完了"

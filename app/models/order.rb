@@ -4,6 +4,10 @@ class Order < ApplicationRecord
 
   enum payment_method: {credit_card: 0, bank: 1}
 
+  enum status: {waiting:0,confirmation:1,priduction:2,sending:3,arrived:4 }
   
+  def excluded
+   total_payment - 800
+  end
 
 end
