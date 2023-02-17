@@ -17,8 +17,3 @@ $(function(){
     $('.javajava').css({'text-decoration':'none'});
   });
 });
-$(function(){
-  $("td").css({
-    'padding-bottom':'10px'
-  });
-});

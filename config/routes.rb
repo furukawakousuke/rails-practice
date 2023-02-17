@@ -10,7 +10,9 @@ sessions: "admin/sessions"
   }
   
   namespace :admin do
+    root to: 'homes#top'
     resources :orders,only:[:index,:show,:update]
+    resources :order_details,only:[:update]
     resources :customers,only:[:index,:show,:edit,:update]
     resources :genres,only:[:index,:edit,:create,:update]
     resources :items,only:[:index,:new,:show,:edit,:create,:update]
