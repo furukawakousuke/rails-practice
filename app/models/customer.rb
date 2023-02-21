@@ -9,6 +9,7 @@ class Customer < ApplicationRecord
          has_many :cart_items,dependent: :destroy
          has_many :orders,dependent: :destroy
          
+         
          enum is_deleted: { withdrawal: true, valider: false }
          
          def full_name
