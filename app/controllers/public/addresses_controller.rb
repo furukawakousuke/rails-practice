@@ -34,5 +34,4 @@ class Public::AddressesController < ApplicationController
   def addresses_params
     params.require(:address).permit(:customer_id,:name,:postal_code,:address)
   end
-
 end
